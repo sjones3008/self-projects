@@ -1,0 +1,15 @@
+Test cases to Register as a shopper
+Test case 1: To successfully register as a shopper from “Get Paid to shop” option on shipt.com menu
+                     Click on ‘Apply Now’, then click on ‘Begin’
+                     Fill in all the fields in the form submit the application and land on Thank you page.
+Test case 2:  Test case to submit without entering mandatory or incorrect values.  Field validation for all fields, including checking for mandatory fields.
+Test case 3:   Appropriate error message displayed for missing and incorrect input values. 
+Test case 4: Try to register existing shopper again to make sure it is not successful.
+Test case 5: Verify that registered shopper receives emails within 24 hrs. 
+Test case 6: Verify all the different flows to register as a Shopper using different combinations of responses to the questions.
+ For example,  
+Shopper who is a minor and is referred by another employee
+Shopper over the age of 18 years and not referred
+Shopper who is a smoker 
+Shopper who is a non-smoker 
+

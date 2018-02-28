@@ -1,0 +1,22 @@
+BUG REPORT 2
+Defect Title: Req -301: Shopper is able  to register multiple times with the same email id
+Steps to reproduce: 
+1.	Go to URL https://www.shipt.com
+2.	Click on ‘Get Paid to Ship’ link on the menu bar, the Apply now page loads.
+3.	On Apply Now page, click on ‘Apply Now’, Shipt Shopper page loads
+4.	Click on ‘Start, fill in all fields and click on ‘Submit’ button 
+5.	Thank you page loads
+6.	Repeat steps 2 to 4 using the same Shopper email id as before
+Observed result: No error message is shown and Shopper can re-register with duplicate email id
+Expected result: Shopper should be prompted with appropriate error message to chose a different email id. 
+Description:  As per Req #3201 of the Requirements Document, shopper is uniquely identified by the email id. Same shopper cannot register multiple times.
+Fields: 
+Assignee – Assign to the respective developer 
+Priority –  High -1
+Severity – Critical -1
+Sprint – Current active sprint 
+Attachment – Screenshot or video that demonstrates your bug 
+Environment -  QA 
+Browser – All browsers 
+Owner – Sharon Jones
+Status – Assigned   

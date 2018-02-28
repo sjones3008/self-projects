@@ -1,0 +1,21 @@
+BUG REPORT 1
+Defect Title: Req -201: Unable to proceed with customer membership sign up after zip code look up on IE Version 9 
+Steps to reproduce: 
+1.	Go to URL https://www.shipt.com
+2.	Click on ‘Get Started’ button, the Sign-up page loads.
+3.	On Sign-up page, enter email and valid zipcode and click on ‘Go’, Choose Plan page loads
+4.	Click on ‘Start Annual Plan’, Account & Payment info partially loads
+Observed result: No fields are displayed below Account Info section
+Expected result: User should be presented with Account info and Payment Info fields to proceed with membership
+Description:  As per Req # 201 of the Requirements Document, the user should be able to enter Account and Payment information in order to start the annual membership. Screenshot attached
+Fields: 
+Assignee – Assign to the respective developer 
+Priority –  High -1
+Severity – Critical -1
+Sprint – Current active sprint 
+Attachment – Screenshot or video that demonstrates your bug 
+Environment -  QA 
+Browser – IE version 9 
+Owner – Sharon Jones
+Status – Assigned   
+Notes/ Comments -  The screenshot has been attached. This defect occurs in certain versions of IE and Firefox

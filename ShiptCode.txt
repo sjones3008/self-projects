@@ -1,0 +1,225 @@
+package com.shopper.testsuite;
+
+import java.io.File;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+public class ShopperTestUpdated {
+
+	WebDriver driver;
+
+	@BeforeTest
+	public void beforeTest() {
+		File f = new File("C:\\Users\\Sharon Jones\\Downloads\\chromedriver_win32\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", f.getAbsolutePath());
+		driver = new ChromeDriver();
+		// open website
+		driver.get("https://www.shipt.com/");
+		//driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+	}
+
+	@AfterTest
+	public void afterTest() {
+
+		driver.close();
+
+	}
+
+	@Test
+	public void shopperSignUp() {
+
+		// click on Get Paid to Shop on the menu
+		driver.findElement(By.xpath("//ul/li/a[1]")).click();
+
+		// click on apply now
+		WebDriverWait wait = new WebDriverWait(driver, 20);
+		WebElement apply = wait
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div/a[text()='Apply Now']")));
+		apply.click();
+
+		// waiting for frame to load
+		wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//iframe[contains(@src,'shiptshopper.typeform.com')]")));
+		// switching to frame
+		driver.switchTo().frame(driver.findElement(By.xpath("//iframe[contains(@src,'shiptshopper.typeform.com')]")));
+
+		WebElement begin = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='Begin']")));
+
+		// click on begin
+		begin.click();
+		// start the form
+		wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//div/span/strong[contains(text(),'Start by telling')]")));
+		driver.findElement(By.xpath("//*[@id='45179376']/div/div[3]/div/div[2]/div")).click();
+
+		WebElement firstName = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//span[contains(text(),'First Name')]/following::input")));
+		firstName.clear();
+		firstName.sendKeys("John");
+		firstName.sendKeys("\n");
+		_wait();
+
+		WebElement lastName = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Last Name')]/following::input")));
+		lastName.clear();
+		lastName.sendKeys("Smith");
+		lastName.sendKeys("\n");
+		_wait();
+
+		WebElement email = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Email')]/following::input")));
+		email.clear();
+		email.sendKeys("myemail@gmail.com");
+
+		scroll(2);
+		yesOrNoSelect(wait, "//li[@id='71766466']/div/div[3]/div[2]/div[1]/div/ul/li[1]/div[1]");
+		
+		WebElement phone = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Phone Number')]/following::input")));
+		phone.clear();
+		phone.sendKeys("1231231234");
+		phone.sendKeys("\n");
+
+		driver.findElement(By.xpath("//div[@class='button-wrapper down']")).click();
+
+		WebElement area = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//span[contains(text(),'In which')]//following::input")));
+		area.clear();
+		area.sendKeys("Abilene, TX");
+
+		scroll(1);
+		yesOrNoSelect(wait, "//li[@id='45262192']/div/div[3]/div/div[1]/div/ul/li[1]/div[1]");
+		
+		scroll(0);
+		wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//span/strong[contains(text(),'Now, a little')]")));
+		mClick(driver.findElement(By.xpath("//*[@id='45182398']/div/div[3]/div[2]/div[2]/div")));
+		_wait(2000);
+
+		WebElement address = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Address Line 1')]/following::input")));
+		address.clear();
+		address.sendKeys("beale street");
+		address.sendKeys("\n");
+		_wait();
+
+		WebElement city = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//span[contains(text(),'City')]/following::input")));
+		city.clear();
+		city.sendKeys("san francisco");
+		city.sendKeys("\n");
+		_wait();
+
+		WebElement state = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//span[contains(text(),'State')]/following::input")));
+		state.clear();
+		state.sendKeys("CA");
+		state.sendKeys("\n");
+		_wait();
+
+		WebElement zipcode = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Zip')]/following::input")));
+		zipcode.clear();
+		zipcode.sendKeys("94101");
+		_wait();
+
+		driver.findElement(By.xpath("//div[@class='button-wrapper down']")).click();
+		WebElement size = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@id='60317147']")));
+		size.click();
+
+		scroll(0);
+		wait.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div/span[contains(text(),'Just a few')]")));
+		forceClick(driver.findElement(By.xpath("//*[@id='45182921']/div/div[3]/div/div[2]/div")));
+		
+		// Peak Days QA
+		scroll(0);
+		yesOrNoSelect(wait, "//span[contains(text(), 'peak days')]/../../div[3]/div/div[1]/div/ul/li[1]");
+
+		// Reference QA
+		yesOrNoSelect(wait, "//span[contains(text(), 'Did one of our current shoppers')]/../../div[3]/div/div[1]/div[1]/ul/li[2]");
+
+		// Smoke QA
+		yesOrNoSelect(wait, "//span[contains(text(), 'smoke?')]/../../div[3]/div[2]/div[1]/div[1]/ul/li[1]");
+
+		WebElement submit = wait.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='button-wrapper submit']")));
+		_wait();
+		submit.click();
+		
+		_wait(3000);
+		
+		WebElement thankyou = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1/span")));
+		String actual = thankyou.getText();
+		String expected = "Thank you for applying with Shipt!";
+		
+		if(expected.equals(actual))
+			System.out.println("test is passed:Shopper registration complete");
+		else 
+			System.out.println("test is failed:Shopper registration failed");
+		
+		
+	}
+
+	private void yesOrNoSelect(WebDriverWait wait, String xpath) {
+		WebElement email_confirmation = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+		_wait(2000);
+		mClick(email_confirmation);
+		_wait(3000);
+	}
+
+	private void scroll(int c) {
+		if (c <= 0) {
+			c = 1;
+		}
+		while (c-- > 0) {
+			driver.findElement(By.xpath("//div[@class='button-wrapper down']")).click();
+			if (c > 0) {
+				_wait(1000);
+			}
+		}
+	}
+
+	private void forceClick(WebElement email_confirmation) {
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", email_confirmation);
+		_wait(1000);
+	}
+
+	private void mClick(WebElement email_confirmation) {
+		Actions actions = new Actions(driver);
+		actions.moveToElement(email_confirmation).perform();
+		actions.click().perform();
+	}
+
+	private void _wait() {
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	private void _wait(long seconds) {
+		try {
+			Thread.sleep(seconds);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}
