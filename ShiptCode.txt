@@ -38,13 +38,15 @@ public class ShopperTestUpdated {
 
 	}
 
+	
+	//This test case verifies the successful shopper registration 
 	@Test
 	public void shopperSignUp() {
 
-		// click on Get Paid to Shop on the menu
+		// 1.click on Get Paid to Shop on the menu
 		driver.findElement(By.xpath("//ul/li/a[1]")).click();
 
-		// click on apply now
+		// 2.click on apply now
 		WebDriverWait wait = new WebDriverWait(driver, 20);
 		WebElement apply = wait
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div/a[text()='Apply Now']")));
@@ -58,90 +60,94 @@ public class ShopperTestUpdated {
 
 		WebElement begin = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='Begin']")));
 
-		// click on begin
+		// 3.click on begin
 		begin.click();
-		// start the form
-		wait.until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("//div/span/strong[contains(text(),'Start by telling')]")));
+		
+		// 4.start the form
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div/span/strong[contains(text(),'Start by telling')]")));
 		driver.findElement(By.xpath("//*[@id='45179376']/div/div[3]/div/div[2]/div")).click();
-
-		WebElement firstName = wait.until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("//span[contains(text(),'First Name')]/following::input")));
+        
+		// 5.fill the form
+		// first name 
+		WebElement firstName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'First Name')]/following::input")));
 		firstName.clear();
 		firstName.sendKeys("John");
 		firstName.sendKeys("\n");
 		_wait();
 
-		WebElement lastName = wait.until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Last Name')]/following::input")));
+		//last name
+		WebElement lastName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Last Name')]/following::input")));
 		lastName.clear();
 		lastName.sendKeys("Smith");
 		lastName.sendKeys("\n");
 		_wait();
-
-		WebElement email = wait.until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Email')]/following::input")));
+        
+		// email address 
+		WebElement email = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Email')]/following::input")));
 		email.clear();
 		email.sendKeys("myemail@gmail.com");
 
 		scroll(2);
+		//email address confirmation 
 		yesOrNoSelect(wait, "//li[@id='71766466']/div/div[3]/div[2]/div[1]/div/ul/li[1]/div[1]");
 		
+		//phone number
 		WebElement phone = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Phone Number')]/following::input")));
 		phone.clear();
 		phone.sendKeys("1231231234");
 		phone.sendKeys("\n");
 
 		driver.findElement(By.xpath("//div[@class='button-wrapper down']")).click();
-
-		WebElement area = wait.until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("//span[contains(text(),'In which')]//following::input")));
+        
+		//area of application
+		WebElement area = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'In which')]//following::input")));
 		area.clear();
 		area.sendKeys("Abilene, TX");
 
 		scroll(1);
 		yesOrNoSelect(wait, "//li[@id='45262192']/div/div[3]/div/div[1]/div/ul/li[1]/div[1]");
 		
+		// form continuation 
 		scroll(0);
-		wait.until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("//span/strong[contains(text(),'Now, a little')]")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span/strong[contains(text(),'Now, a little')]")));
 		mClick(driver.findElement(By.xpath("//*[@id='45182398']/div/div[3]/div[2]/div[2]/div")));
 		_wait(2000);
 
-		WebElement address = wait.until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Address Line 1')]/following::input")));
+		//address line 1 
+		WebElement address = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Address Line 1')]/following::input")));
 		address.clear();
 		address.sendKeys("beale street");
 		address.sendKeys("\n");
 		_wait();
 
-		WebElement city = wait.until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("//span[contains(text(),'City')]/following::input")));
+		//city
+		WebElement city = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'City')]/following::input")));
 		city.clear();
 		city.sendKeys("san francisco");
 		city.sendKeys("\n");
 		_wait();
 
-		WebElement state = wait.until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("//span[contains(text(),'State')]/following::input")));
+		// state
+		WebElement state = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'State')]/following::input")));
 		state.clear();
 		state.sendKeys("CA");
 		state.sendKeys("\n");
 		_wait();
 
-		WebElement zipcode = wait.until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Zip')]/following::input")));
+		//zip code entry
+		WebElement zipcode = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Zip')]/following::input")));
 		zipcode.clear();
 		zipcode.sendKeys("94101");
 		_wait();
 
+		// t shirt size selection 
 		driver.findElement(By.xpath("//div[@class='button-wrapper down']")).click();
 		WebElement size = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@id='60317147']")));
 		size.click();
 
+		// continue pending QA
 		scroll(0);
-		wait.until(
-				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div/span[contains(text(),'Just a few')]")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div/span[contains(text(),'Just a few')]")));
 		forceClick(driver.findElement(By.xpath("//*[@id='45182921']/div/div[3]/div/div[2]/div")));
 		
 		// Peak Days QA
@@ -154,17 +160,19 @@ public class ShopperTestUpdated {
 		// Smoke QA
 		yesOrNoSelect(wait, "//span[contains(text(), 'smoke?')]/../../div[3]/div[2]/div[1]/div[1]/ul/li[1]");
 
-		WebElement submit = wait.until(
-				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='button-wrapper submit']")));
+		// Submit the filled form
+		WebElement submit = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='button-wrapper submit']")));
 		_wait();
 		submit.click();
 		
 		_wait(3000);
 		
+		// Thank you page loads
 		WebElement thankyou = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1/span")));
 		String actual = thankyou.getText();
 		String expected = "Thank you for applying with Shipt!";
 		
+		// verify successful shopper registration  
 		if(expected.equals(actual))
 			System.out.println("test is passed:Shopper registration complete");
 		else 
@@ -173,6 +181,7 @@ public class ShopperTestUpdated {
 		
 	}
 
+	
 	private void yesOrNoSelect(WebDriverWait wait, String xpath) {
 		WebElement email_confirmation = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
 		_wait(2000);
@@ -180,6 +189,7 @@ public class ShopperTestUpdated {
 		_wait(3000);
 	}
 
+	// scroll down helper method
 	private void scroll(int c) {
 		if (c <= 0) {
 			c = 1;
@@ -191,19 +201,22 @@ public class ShopperTestUpdated {
 			}
 		}
 	}
-
+	
+     // force click helper method
 	private void forceClick(WebElement email_confirmation) {
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
 		executor.executeScript("arguments[0].click();", email_confirmation);
 		_wait(1000);
 	}
 
+	//mouse move helper 
 	private void mClick(WebElement email_confirmation) {
 		Actions actions = new Actions(driver);
 		actions.moveToElement(email_confirmation).perform();
 		actions.click().perform();
 	}
 
+	//wait method 
 	private void _wait() {
 		try {
 			Thread.sleep(2000);
